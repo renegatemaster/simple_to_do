@@ -1,0 +1,14 @@
+<div class="card mb-4 mt-4">
+  <div class="card-header">
+    Создано {{ task.created }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ task.name }}
+    </h5>
+    <p class="card-text">
+      {{ task.body|truncatewords:10 }}
+    </p>
+    <a href={% url 'tasks:task_detail' task.id %}>Read</a>
+  </div>
+</div>

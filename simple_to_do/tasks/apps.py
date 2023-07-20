@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class ToDoAppConfig(AppConfig):
+class TasksAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'to_do_app'
+    name = 'tasks'
     verbose_name = 'Задачи'

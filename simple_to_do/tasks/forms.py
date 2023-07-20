@@ -4,7 +4,9 @@ from .models import Task
 
 
 class TaskForm(forms.ModelForm):
-    deadline = forms.SplitDateTimeField(widget=AdminSplitDateTime())
+    deadline = forms.SplitDateTimeField(
+        widget=AdminSplitDateTime(), required=False
+    )
 
     class Meta:
         model = Task
