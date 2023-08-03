@@ -1,0 +1,16 @@
+asgiref==3.7.2
+attrs==23.1.0
+Django==3.2.3
+flake8==6.0.0
+flake8-bugbear==23.7.10
+flake8-builtins==2.1.0
+flake8-commas==2.1.0
+flake8-import-order==0.18.2
+flake8-variables-names==0.0.6
+mccabe==0.7.0
+pep8-naming==0.13.3
+pycodestyle==2.10.0
+pyflakes==3.0.1
+pytz==2023.3
+sqlparse==0.4.4
+typing-extensions==4.7.1

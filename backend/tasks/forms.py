@@ -1,11 +1,12 @@
 from django import forms
 from django.contrib.admin.widgets import AdminSplitDateTime
+
 from .models import Task
 
 
 class TaskForm(forms.ModelForm):
     deadline = forms.SplitDateTimeField(
-        widget=AdminSplitDateTime(), required=False
+        widget=AdminSplitDateTime(), required=False,
     )
 
     class Meta:
@@ -13,6 +14,7 @@ class TaskForm(forms.ModelForm):
         fields = (
             'name',
             'body',
+            'subtasks',
             'deadline',
-            'importance'
+            'importance',
         )

@@ -5,9 +5,9 @@
 {% endblock%}
 
 {% block content %}
-  <h1>Список задач</h1>
+  <h1 class="mt-4">Список задач</h1>
   {% for task in tasks %}
     {% include 'include/card.html' %}
-  {% if not forloop.last %}<hr>{% endif %}
+  {% comment %} {% if not forloop.last %}<hr>{% endif %} {% endcomment %}
   {% endfor %}
 {% endblock %}

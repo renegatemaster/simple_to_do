@@ -1,14 +1,14 @@
-from django.shortcuts import render
-from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-from .models import Task
 from .forms import TaskForm
+from .models import Task
 
 
 def index(request):
     template = 'tasks/index.html'
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user)
     context = {
         'tasks': tasks,
     }
@@ -24,8 +24,8 @@ class AddTask(CreateView):
 
 def task_detail(request, pk):
     template = 'tasks/task_detail.html'
-    task = Task.objects.get(pk=pk)
+    task = get_object_or_404(Task, id=pk, user=request.user)
     context = {
-        'task': task
+        'task': task,
     }
     return render(request, template, context)
