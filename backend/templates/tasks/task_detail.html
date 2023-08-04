@@ -5,5 +5,29 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'include/card.html' %}
+  <div class="card mt-5 mb-5">
+
+    <div class="card-header">Best before {{ task.deadline }}</div>
+    <div class="card-body">
+
+      <div>
+        <h3>{{ task.name }}</h3>
+      </div>
+
+      <div>{{ task.body }}</div>  
+
+    </div>
+    <div class="card-footer bg-light">
+
+      <div>Impotance level: {{ task.importance }}</div>
+
+      <div class="card-text">
+        <small class="text-muted">
+          Created {{ task.created }} by {{ task.author }}.
+        </small>
+      </div>
+
+    </div>
+
+  </div>
 {% endblock %}

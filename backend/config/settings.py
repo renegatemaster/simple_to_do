@@ -3,14 +3,17 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+# SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = 'django-insecure-utk*98aebwc66)9k%=8symwq8jp*l699ef(i8w+eywc@z9^+rf'
 
-if os.getenv('DEBUG') is None:
-    DEBUG = False
-else:
-    DEBUG = os.getenv('DEBUG')
+# if os.getenv('DEBUG') is None:
+#     DEBUG = False
+# else:
+#     DEBUG = os.getenv('DEBUG')
+DEBUG = True
 
-ALLOWED_HOSTS = str(os.getenv('ALLOWED_HOSTS')).split(' ')
+# ALLOWED_HOSTS = str(os.getenv('ALLOWED_HOSTS')).split(' ')
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -25,6 +28,7 @@ INSTALLED_APPS = [
 
     'tasks',
     'users',
+    'core',
 ]
 
 AUTH_USER_MODEL = 'users.User'

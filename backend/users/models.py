@@ -25,7 +25,7 @@ class User(AbstractUser):
         ordering = ['date_joined']
 
     def __str__(self):
-        return self.get_full_name
+        return self.username
 
     def get_user_email(self):
         return self.email

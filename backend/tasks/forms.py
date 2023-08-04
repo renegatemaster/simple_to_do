@@ -14,7 +14,9 @@ class TaskForm(forms.ModelForm):
         fields = (
             'name',
             'body',
-            'subtasks',
             'deadline',
             'importance',
         )
+        widgets = {
+            'body': forms.Textarea(),
+        }

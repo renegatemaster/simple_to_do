@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class Task(models.Model):
@@ -9,6 +13,12 @@ class Task(models.Model):
         ('!!!', 'Умри, но сделай!!!'),
     )
 
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='tasks',
+        verbose_name=_('Создатель задачи'),
+    )
     name = models.CharField(
         max_length=64,
         db_index=True,
@@ -35,20 +45,4 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
     def __str__(self):
-        return f'Задача "{self.name}".'
-
-
-class SubTask(models.Model):
-    text = models.CharField(max_length=100)
-    task = models.ForeignKey(
-        Task,
-        related_name='subtasks',
-        on_delete=models.CASCADE,
-    )
-
-    class Meta:
-        verbose_name = 'Подзадача'
-        verbose_name_plural = 'Подзадачи'
-
-    def __str__(self):
-        return self.text[:15]
+        return self.name

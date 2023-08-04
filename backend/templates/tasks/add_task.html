@@ -1,14 +1,29 @@
 {% extends 'base.html' %}
+{% load task_filter %}
 
 {% block title %}
   Add new task
 {% endblock %}
 
 {% block content %}
-  <h1>Тут будет форма для создания задачи</h1>
+  <h1 class="mt-4 mb-4">Создайте новую задачу</h1>
   <form method="post" action="{% url 'tasks:add_task' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Добавить задачу">
+
+    {% for field in form %}
+      <div class="form-group">
+      <label for="{{ field.auto_id }}">{{ field.label }}</label>
+      {{ field|addclass:"form-control" }}
+      {% if field.errors %}
+        <div class="invalid-feedback">
+          {% for error in field.errors %}
+            {{ error }}
+          {% endfor %}
+        </div>
+      {% endif %}
+      </div>
+    {% endfor %}
+
+    <input class="btn btn-dark" type="submit" value="Добавить задачу">
   </form>
 {% endblock %}
